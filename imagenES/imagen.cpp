@@ -7,8 +7,8 @@ typedef unsigned char byte;
 Imagen::Imagen(): filas(0), cols(0), img(0) { }
 
 Imagen::Imagen(const Imagen& otra): filas(otra.filas), cols(otra.cols) {
-  if (otra.img == null_ptr) {
-    img = null_ptr;
+  if (otra.img == nullptr) {
+    img = nullptr;
   }
   else {
     img = new byte[filas*cols];
@@ -23,7 +23,7 @@ Imagen::Imagen(int filas, int cols) {
   this->cols = cols;
   int tam = filas*cols;
   if (tam == 0) {
-    img = null_ptr;
+    img = nullptr;
   }
   else {
     img = new byte[tam];
@@ -32,7 +32,7 @@ Imagen::Imagen(int filas, int cols) {
 
 
 Imagen::~Imagen() {
-  if (img != null_ptr) {
+  if (img != nullptr) {
     delete [] img;
   }
 }
@@ -43,7 +43,7 @@ const Imagen& Imagen::operator=(const Imagen& otra) {
   Imagen copia(otra);
   byte* aux = this->img;
   this->img = copia.img;
-  copia->img = aux;
+  copia.img = aux;
   return *this;
 }
 
