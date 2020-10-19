@@ -35,6 +35,14 @@ public:
   Imagen(const Imagen& otra);
 
   /**
+   * @brief Constructor a partir de un archivo tipo .pgm.
+   * @pre El archivo existe y tiene permisos de lectura activados.
+   * @param nombre El nombre del archivo.
+   * @post Se crea una imagen a partir de los datos en el archivo dado.
+   */
+  Imagen(const char* nombre);
+
+  /**
    * @brief Crear una imagen en memoria con @p filas filas y @p cols columnas.
    * @param filas Número de filas a reservar para la imagen nueva.
    * @param cols Número de columnas a reservar para la imagen nueva.

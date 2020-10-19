@@ -82,6 +82,11 @@ bool Imagen::escribir_imagen_a(const char *nombre) {
 }
 
 
+Imagen::Imagen(const char* nombre): Imagen() {
+  this->leer_imagen_desde(nombre);
+}
+
+
 
 
 
