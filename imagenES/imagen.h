@@ -7,6 +7,8 @@
 #ifndef _IMAGEN_H_
 #define _IMAGEN_H_
 
+#include "imagenES.h" // Necesario para leer y escribir imágenes a disco.
+
 typedef unsigned char byte; // Cada píxel es un byte
 
 class Imagen {
@@ -14,7 +16,9 @@ class Imagen {
 private:
   int filas;
   int cols;
-  byte **img; // Vector de filas (o de columnas?). Matriz dinámica 2D.
+  byte *img; // La fila 0 entera, luego la fila 1 entera, luego la 2...
+             // Acceder a (f,c) usando índice cols*f + c.
+
 
 public:
 
@@ -87,10 +91,16 @@ public:
    * @post No modifica la imagen.
    * @return El valor del píxel en la posición dada.
    */
-  byte valor_pixel(int fila, int col) const; // consultar valor de un píxel. Preconds sobre f,c y postcond que no modifica.
+   byte valor_pixel(int fila, int col) const;
 
 
 
+
+
+
+
+private:
+  bool contiene_pixel(int f, int c); // Si la imagen tiene un píxel en (f,c).
 
 
 };
