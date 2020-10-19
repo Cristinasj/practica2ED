@@ -139,6 +139,18 @@ public:
      */
     Imagen crear_icono(int fil_resultado, int col_resultado);
 
+    //// CRISTINA!!! AQUÍ HE DEJADO ESTO PARA QUE LO IMPLEMENTES.
+    /////  ME HACE FALTA LA CABECERA DE LA FUNCIÓN PARA HACER
+    /////     EL MENÚ.
+    /////
+    /////   BORRA ESTO, PON LA DOCUMENTACIÓN E IMPLEMENTA COMO TE APETEZCA PLIS?
+    /////
+    /////
+    /////   UwU -_- ^-^
+    /////
+    /////
+    Imagen aumenta_contraste(byte min, byte max);
+
 
 
 
