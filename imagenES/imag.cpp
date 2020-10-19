@@ -9,8 +9,8 @@ typedef unsigned char byte;
 int main(int nargs, char ** args) {
 
   Imagen im("vacas.pgm");
-  im.umbralizar_automaticamente();
-  im.escribir_imagen_a("vacas_umbralizadas.pgm");
+  Imagen icono = im.crear_icono(100, 100);
+  icono.escribir_imagen_a("icono.pgm");
 
   return 0;
 }

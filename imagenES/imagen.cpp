@@ -59,7 +59,7 @@ void Imagen::asigna_pixel(int fila, int col, byte valor) {
 
 
 byte Imagen::valor_pixel(int fila, int col) const {
-  return img[fila*filas + col];
+  return img[fila*cols + col];
 }
 
 
@@ -144,7 +144,29 @@ void Imagen::umbralizar_automaticamente() {
 
 
 Imagen Imagen::crear_icono(int fil_resultado, int col_resultado) {
-  
+  Imagen resultado(fil_resultado, col_resultado);
+
+  int alto_cuadrante = this->filas / fil_resultado;
+  int ancho_cuadrante = this->cols / col_resultado;
+  int casillas_por_cuadrante = alto_cuadrante * ancho_cuadrante;
+
+  for (int f_res=0; f_res<fil_resultado; f_res++) {
+    for (int c_res=0; c_res<col_resultado; c_res++) {
+
+      // Para el píxel de la imagen resultado, calcular la media del cuadrante asociado.
+      long suma = 0;
+      for (int f=f_res*alto_cuadrante; f<(f_res+1)*alto_cuadrante; f++) {
+        for (int c=c_res*ancho_cuadrante; c<(c_res+1)*ancho_cuadrante; c++) {
+          suma += valor_pixel(f, c);
+        }
+      }
+
+      resultado.asigna_pixel(f_res, c_res, (byte)(suma/casillas_por_cuadrante));
+
+    }
+  }
+
+  return resultado;
 }
 
 
