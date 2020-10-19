@@ -1,19 +1,19 @@
-CCFLAGS = -std=c++11
+CCFLAGS = -std=c++11 -g
 
 imag: imagen.o imag.o imagenES.o
-	g++ $(CCFLAGS) -g -o $@ $^ -I.
+	g++ $(CCFLAGS) -o $@ $^ -I.
 
 negativo: negativo.o imagenES.o
-	g++ $(CCFLAGS) -g -o negativo negativo.o imagenES.o
+	g++ $(CCFLAGS) -o negativo negativo.o imagenES.o
 
 imagenES.o: imagenES.cpp imagenES.h
-	g++ $(CCFLAGS) -g -c -o imagenES.o -I. imagenES.cpp
+	g++ $(CCFLAGS) -c -o imagenES.o -I. imagenES.cpp
 
 imagen.o: imagen.cpp imagen.h
-	g++ $(CCFLAGS) -g -c -o imagen.o -I. $<
+	g++ $(CCFLAGS) -c -o imagen.o -I. $<
 
 imag.o: imag.cpp imagen.o imagenES.o
-	g++ $(CCFLAGS) -g -c -o $@ $<
+	g++ $(CCFLAGS) -c -o $@ $<
 
 
 clean:
