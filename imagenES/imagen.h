@@ -7,6 +7,8 @@
 #ifndef _IMAGEN_H_
 #define _IMAGEN_H_
 
+#include <iostream>
+#include <cmath>
 #include "imagenES.h" // Necesario para leer y escribir imágenes a disco.
 
 typedef unsigned char byte; // Cada píxel es un byte
@@ -119,6 +121,23 @@ public:
     * @return @retval true Si se pudo realizar la escritura.
     */
     bool escribir_imagen_a(const char *nombre);
+
+    /**
+     * @brief Umbralizar la imagen eligiendo el umbral de forma automática.
+     * @pre La imagen está inicializada y no vacía.
+     * @post Todos los valores inferiores al umbral calculado se ponen a 255.
+     * @return @retval void
+     */
+    void umbralizar_automaticamente();
+
+    /**
+     * @brief Crea un icono a partir de la imagen original.
+     * @pre La imagen inicial es de tamaño > 0 y está inicializada.
+     * @param fil_resultado El número de filas de la imagen resultado.
+     * @param col_resultado El número de columnas de la imagen resultado.
+     * @return Imagen reducida.
+     */
+    Imagen crear_icono(int fil_resultado, int col_resultado);
 
 
 

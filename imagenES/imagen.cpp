@@ -88,7 +88,93 @@ Imagen::Imagen(const char* nombre): Imagen() {
 
 
 
+// Declarado para poder usarlo en umbralizar_automaticamente
+byte valor_medio(byte* array, int num_elementos);
+
+
+
+void Imagen::umbralizar_automaticamente() {
+  const byte Max_Diferencia = 5;
+
+  // Inicializar umbral_anterior a un extremo (si coinciden a la primera, es una imagen blanca)
+  byte umbral_anterior = 255;
+
+  // Primero determinar el primer umbral.
+  byte umbral_actual = valor_medio(img, filas*cols);
+
+  // Lista de píxeles inferiores o iguales al umbral
+  byte* menores = new byte[filas*cols];
+  int num_menores = 0;
+
+  // Lista de píxeles superiores al umbral
+  byte* mayores = new byte[filas*cols];
+  int num_mayores = 0;
+
+  // Iterar hasta que se estabilice.
+  while(abs(umbral_actual - umbral_anterior) > Max_Diferencia) {
+    num_menores = num_mayores = 0;
+
+    // Repartir entre los dos subgrupos
+    for (int i=0; i<filas*cols; i++) {
+      if (img[i] <= umbral_actual) {
+        menores[num_menores] = img[i];
+        num_menores++;
+      }
+      else {
+        mayores[num_mayores] = img[i];
+        num_mayores++;
+      }
+    }
+
+    // Calcular las medias y actualizar umbrales.
+    umbral_anterior = umbral_actual;
+    umbral_actual = (valor_medio(menores, num_menores) + valor_medio(mayores, num_mayores)) / 2;
+  }
+
+  delete [] mayores;
+  delete [] menores;
+
+  // ----- Ahora que se tiene el umbral (umbral_actual), umbralizar. ----
+  for (int i=0; i<filas*cols; i++) {
+    img[i] = (img[i]<=umbral_actual) ? img[i] : 255;
+  }
+
+}
+
+
+
+Imagen Imagen::crear_icono(int fil_resultado, int col_resultado) {
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 // Funciones privadas para reservar espacio, liberar, copiar...
+
+// Calcular el valor medio de luminosidad en una lista de píxeles.
+byte valor_medio(byte* array, int num_elementos) {
+  long int suma = 0;
+  for (int i=0; i<num_elementos; i++) {
+    suma += array[i];
+  }
+  return (byte)(suma/(num_elementos==0 ? 1 : num_elementos));
+}
+
+
+
+
+
+// Privados

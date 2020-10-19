@@ -8,9 +8,9 @@ typedef unsigned char byte;
 
 int main(int nargs, char ** args) {
 
-  // Prueba: A ver si puede leer y escribir una imagen y dejarla intacta?
   Imagen im("vacas.pgm");
-  im.escribir_imagen_a("vacas_copia.pgm");
+  im.umbralizar_automaticamente();
+  im.escribir_imagen_a("vacas_umbralizadas.pgm");
 
   return 0;
 }
