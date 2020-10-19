@@ -70,12 +70,15 @@ bool Imagen::contiene_pixel(int f, int c) {
 
 
 void Imagen::leer_imagen_desde(const char *nombre) {
-
+  if (img != nullptr) {
+    delete [] img;
+  }
+  img = LeerImagenPGM(nombre, filas, cols);
 }
 
 
 bool Imagen::escribir_imagen_a(const char *nombre) {
-
+  return EscribirImagenPGM(nombre, img, filas, cols);
 }
 
 
