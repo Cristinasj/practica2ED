@@ -1,5 +1,5 @@
 # practica2ED
 
-Hecho: Clase Imagen con E/S, 2, 4
+Hecho: Clase Imagen con E/S, 2, 4, Menú (completar cuando esté el resto)
 
-Falta: Menú, 5, 6|7
+Falta: 5, 6|7
