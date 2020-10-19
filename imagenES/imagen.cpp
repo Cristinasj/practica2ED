@@ -69,6 +69,18 @@ bool Imagen::contiene_pixel(int f, int c) {
 
 
 
+void Imagen::leer_imagen_desde(const char *nombre) {
+
+}
+
+
+bool Imagen::escribir_imagen_a(const char *nombre) {
+
+}
+
+
+
+
 
 
 // Funciones privadas para reservar espacio, liberar, copiar...

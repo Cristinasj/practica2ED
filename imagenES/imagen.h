@@ -93,8 +93,24 @@ public:
    */
    byte valor_pixel(int fila, int col) const;
 
+   /**
+    * @brief Leer la imagen desde un fichero .pgm
+    * @pre El fichero existe y es accesible
+    * @param nombre El nombre del Fichero
+    * @post Se lee la imagen del fichero y se guarda en *this
+    * @return @retval void
+    */
+   void leer_imagen_desde(const char *nombre);
 
-
+   /**
+    * @brief Escribir la imagen a un fichero con nombre dado
+    * @pre El nombre no contiene caracteres no usables en un nombre,
+    * el programa tiene permitido crear/sobreescribir ficheros.
+    * @param nombre El nombre del fichero al que escribir
+    * @post Se escribe la información de la imagen al fichero dado.
+    * @return @retval true Si se pudo realizar la escritura.
+    */
+    bool escribir_imagen_a(const char *nombre);
 
 
 
